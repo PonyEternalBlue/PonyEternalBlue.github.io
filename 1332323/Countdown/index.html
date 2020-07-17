@@ -1,0 +1,122 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html >
+<head>
+    <style type="text/css">
+        div{
+            font-size:60px;
+			font-family:MicrosoftYaHei;
+        }
+        a{
+            font-size:60px;
+			font-family:MicrosoftYaHei;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>JS时间倒计时</title>
+    <script type="text/javascript">
+        var time_now_server,time_now_client,time_end,time_server_client;
+ 
+        time_end=new Date("2020/07/18 18:00:00");//结束的时间
+        time_end=time_end.getTime();//获取的是毫秒
+ 
+        time_now_server=new Date();//开始的时间
+        time_now_server=time_now_server.getTime();
+        setTimeout("show_time()",1000);
+ 
+        function show_time()
+        {
+            var timer = document.getElementById("timer");
+            var hourid = document.getElementById("hour");
+            if(!timer){
+                return ;
+            }
+            timer.innerHTML =time_now_server;
+ 
+            var time_now,time_distance,str_time;
+            var int_day,int_hour,int_minute,int_second;
+            var time_now=new Date();
+            time_now=time_now.getTime();
+            time_distance=time_end-time_now;
+			secondcount.innerHTML="秒数：" + Math.floor(time_distance/1000)+"秒";
+            if(time_distance>0)
+            {
+                int_day=Math.floor(time_distance/86400000)
+                time_distance-=int_day*86400000;
+                int_hour=Math.floor(time_distance/3600000)
+                time_distance-=int_hour*3600000;
+                int_minute=Math.floor(time_distance/60000)
+                time_distance-=int_minute*60000;
+                int_second=Math.floor(time_distance/1000)
+ 
+                if(int_hour < 10)
+                    int_hour="0"+int_hour;
+                if(int_minute<10)
+                    int_minute="0"+int_minute;
+                if(int_second<10)
+                    int_second="0"+int_second;
+                str_time=int_hour+"小时"+int_minute+"分钟"+int_second+"秒";
+                timer.innerHTML="倒计时：" + str_time;
+                setTimeout("show_time()",1000);
+            }
+            else
+            {
+                timer.innerHTML =0;
+            }
+        }
+		function tick() {
+            var years,months,days,hours, minutes, seconds;
+            var intYears,intMonths,intDays,intHours, intMinutes, intSeconds;
+            var today;
+            today = new Date(); //系统当前时间
+            intYears = today.getFullYear(); //得到年份,getFullYear()比getYear()更普适
+            intMonths = today.getMonth() + 1; //得到月份，要加1
+            intDays = today.getDate(); //得到日期
+            intHours = today.getHours(); //得到小时
+            intMinutes = today.getMinutes(); //得到分钟
+            intSeconds = today.getSeconds(); //得到秒钟
+            years = intYears + "-";
+ 
+            if(intMonths < 10 ){
+                months = "0" + intMonths +"-";
+            } else {
+                months = intMonths +"-";
+            }
+            if(intDays < 10 ){
+                days = "0" + intDays +" ";
+            } else {
+                days = intDays + " ";
+            }
+            if (intHours == 0) {
+                hours = "00:";
+            } else if (intHours < 10) {
+                hours = "0" + intHours+":";
+            } else {
+                hours = intHours + ":";
+            }
+            if (intMinutes < 10) {
+                minutes = "0"+intMinutes+":";
+            } else {
+                minutes = intMinutes+":";
+            }
+            if (intSeconds < 10) {
+                seconds = "0"+intSeconds+" ";
+            } else {
+                seconds = intSeconds+" ";
+            }
+            timeString = years+months+days+hours+minutes+seconds;
+            Clock.innerHTML = "现在时间：" + timeString;
+            window.setTimeout("tick();", 1000);
+        }
+        window.onload = tick;
+    </script>
+</head>
+ 
+<body>
+<div id="timer"></div>
+<div id="secondcount"></div>
+<div id="Clock"></div><br>
+<a href="http://www.shmeea.edu.cn/">一键直达</a>
+</body>
+</html>
