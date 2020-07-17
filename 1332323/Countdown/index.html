@@ -18,10 +18,10 @@
     <script type="text/javascript">
         var time_now_server,time_now_client,time_end,time_server_client;
  
-        time_end=new Date("2020/07/18 18:00:00");//结束的时间
-        time_end=time_end.getTime();//获取的是毫秒
+        time_end=new Date("2020/07/18 18:00:00");
+        time_end=time_end.getTime();
  
-        time_now_server=new Date();//开始的时间
+        time_now_server=new Date();
         time_now_server=time_now_server.getTime();
         setTimeout("show_time()",1000);
  
@@ -69,13 +69,13 @@
             var years,months,days,hours, minutes, seconds;
             var intYears,intMonths,intDays,intHours, intMinutes, intSeconds;
             var today;
-            today = new Date(); //系统当前时间
-            intYears = today.getFullYear(); //得到年份,getFullYear()比getYear()更普适
-            intMonths = today.getMonth() + 1; //得到月份，要加1
-            intDays = today.getDate(); //得到日期
-            intHours = today.getHours(); //得到小时
-            intMinutes = today.getMinutes(); //得到分钟
-            intSeconds = today.getSeconds(); //得到秒钟
+            today = new Date(); 
+            intYears = today.getFullYear(); 
+            intMonths = today.getMonth() + 1; 
+            intDays = today.getDate(); 
+            intHours = today.getHours(); 
+            intMinutes = today.getMinutes(); 
+            intSeconds = today.getSeconds(); 
             years = intYears + "-";
  
             if(intMonths < 10 ){
